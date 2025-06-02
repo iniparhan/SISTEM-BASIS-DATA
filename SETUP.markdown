@@ -17,12 +17,8 @@ rbac_system/
 │   ├── login.html
 │   └── dashboard.html
 ├── app.py
-├── create_database.sql
 ├── requirements.txt
 ├── .gitignore
-├── README.md
-├── LICENSE
-└── SETUP.md
 ```
 
 ## Langkah-Langkah Setup
