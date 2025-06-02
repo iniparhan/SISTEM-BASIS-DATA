@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <p>Query Time: {{ query_time }} seconds</p>
+        <table>
+            <tr>
+                <th>Sale ID</th>
+                <th>Product Name</th>
+                <th>Sale Date</th>
+                <th>Amount</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.SaleID }}</td>
+                <td>{{ row.ProductName }}</td>
+                <td>{{ row.SaleDate }}</td>
+                <td>{{ row.Amount }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('dashboard', page=page-1) }}">Previous</a>
+            {% endif %}
+            {% for p in range(1, total_pages + 1) %}
+                <a href="{{ url_for('dashboard', page=p) }}" {% if p == page %}class="active"{% endif %}>{{ p }}</a>
+            {% endfor %}
+            {% if page < total_pages %}
+                <a href="{{ url_for('dashboard', page=page+1) }}">Next</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
